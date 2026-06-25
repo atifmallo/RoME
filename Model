@@ -20,8 +20,6 @@ class Rome(nn.Module):
       3) RMC   - Residual Multimodal Corrector on top of the fused baseline.
       4) CM-DAE - Cross-Modal Denoising Autoencoder over the CIT latent.
 
-    Stage-1 is unchanged (your original unimodal tower).
-    Stage-2 reuses the encoders and adds these contributions on top.
     """
 
     def __init__(self, args, adim, tdim, vdim, D_e, n_classes,
@@ -38,8 +36,7 @@ class Rome(nn.Module):
         self.out_dropout = args.drop_rate
 
         # ---------------- Switchboard flags (Stage-2) ----------------
-        # Defaults: all ON so behavior matches your previous 3-contribution model,
-        # plus CM-DAE which now *also* changes the prediction path via F_latent.
+        
         self.use_cit = bool(getattr(args, "use_cit", True))
         self.use_mrr = bool(getattr(args, "use_mrr", True))
         self.use_rmc = bool(getattr(args, "use_rmc", True))
