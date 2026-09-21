@@ -109,7 +109,7 @@ Run commands from the repository root.
 
 ### Quick test
 
-This command trains one CMU-MOSI trimodal experiment with seed:
+This command trains one CMU-MOSI trimodal experiment. Replace `<RANDOM_SEED>` with an integer:
 
 ```bash
 python -u Rome/train_Rome.py \
@@ -134,7 +134,7 @@ python -u Rome/train_Rome.py \
 
 ### Reproduce all modality conditions
 
-The scripts evaluate audio (`a`), text (`t`), visual (`v`), audio-text (`at`), audio-visual (`av`), text-visual (`tv`), and trimodal (`atv`) settings using seeds different seeds.
+The scripts evaluate audio (`a`), text (`t`), visual (`v`), audio-text (`at`), audio-visual (`av`), text-visual (`tv`), and trimodal (`atv`) settings using three random seeds.
 
 ```bash
 bash run_Rome_cmumosi.sh
@@ -170,7 +170,7 @@ Adding `--do_switch_ablation` evaluates the best trained checkpoint with each co
 
 ## Main results
 
-Results are the mean over seeds 62, 66, and 70. Each cell reports **Accuracy / F1-score (%)**.
+Results are averaged over three independent runs with different random seeds. Each cell reports **Accuracy / F1-score (%)**.
 
 ### CMU-MOSI
 
