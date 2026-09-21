@@ -143,8 +143,6 @@ bash run_Rome_cmumosei.sh
 
 CMU-MOSI uses 100 epochs with a 50/50 split between Stage 1 and Stage 2. CMU-MOSEI uses 60 epochs with a 30/30 split. The released scripts use batch size 32, Adam, learning rate `1e-4`, hidden dimension 256, four layers, two attention heads, and dropout 0.5.
 
-The scripts select GPU 0 for MOSI and GPU 1 for MOSEI. Change `--gpu` if your system has a different number of GPUs. For the audio-only condition, CM-DAE is disabled and `lambda_m` is set to 0 because cross-modal reconstruction is not applicable.
-
 ### Missing-modality conditions
 
 Set `--test_condition` to one of:
