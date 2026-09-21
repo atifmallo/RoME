@@ -1,0 +1,8 @@
+__pycache__/
+*.py[cod]
+*.log
+.DS_Store
+dataset/
+outputs/
+checkpoints/
+rome_readme_info/

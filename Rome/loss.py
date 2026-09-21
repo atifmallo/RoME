@@ -3,7 +3,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 
-## classification loss function: same as CE loss
+## iemocap loss function: same with CE loss
 class MaskedCELoss(nn.Module):
 
     def __init__(self):
