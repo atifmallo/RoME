@@ -2,8 +2,7 @@
 
 #!/bin/bash
 
-# CMUMOSEI with multi-seed runs: 62, 66, 70
-for SEED in 62 66 70
+# CMUMOSEI with three random-seed runs\nSEEDS="${SEEDS:-$RANDOM $RANDOM $RANDOM}"\nfor SEED in $SEEDS
 do
   echo "========== CMUMOSEI, seed=${SEED} =========="
 
