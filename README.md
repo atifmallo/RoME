@@ -109,7 +109,7 @@ Run commands from the repository root.
 
 ### Quick test
 
-This command trains one CMU-MOSI trimodal experiment with seed 66:
+This command trains one CMU-MOSI trimodal experiment with seed:
 
 ```bash
 python -u Rome/train_Rome.py \
@@ -134,7 +134,7 @@ python -u Rome/train_Rome.py \
 
 ### Reproduce all modality conditions
 
-The scripts evaluate audio (`a`), text (`t`), visual (`v`), audio-text (`at`), audio-visual (`av`), text-visual (`tv`), and trimodal (`atv`) settings using seeds **62, 66, and 70**.
+The scripts evaluate audio (`a`), text (`t`), visual (`v`), audio-text (`at`), audio-visual (`av`), text-visual (`tv`), and trimodal (`atv`) settings using seeds different seeds.
 
 ```bash
 bash run_Rome_cmumosi.sh
