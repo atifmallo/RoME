@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# CMUMOSI with multi-seed runs: 62, 66, 70
-for SEED in 62 66 70
+# CMUMOSI with three random-seed runs\nSEEDS="${SEEDS:-$RANDOM $RANDOM $RANDOM}"\nfor SEED in $SEEDS
 do
   echo "========== CMUMOSI, seed=${SEED} =========="
 
