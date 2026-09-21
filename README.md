@@ -117,7 +117,7 @@ python -u Rome/train_Rome.py \
   --audio-feature=wav2vec-large-c-UTT \
   --text-feature=deberta-large-4-UTT \
   --video-feature=manet_UTT \
-  --seed=66 \
+  --seed=<RANDOM_SEED> \
   --batch-size=32 \
   --epochs=100 \
   --stage_epoch=50 \
