@@ -3,7 +3,7 @@ import os
 
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 DATA_ROOT = os.environ.get("ROME_DATA_ROOT", os.path.join(PROJECT_ROOT, "dataset"))
-OUTPUT_ROOT = os.environ.get("ROME_OUTPUT_ROOT", os.path.join(PROJECT_ROOT, "outputs"))
+OUTPUT_ROOT = os.environ.get("ROME_OUTPUT_ROOT", os.path.join(PROJECT_ROOT, "saved"))
 
 DATA_DIR = {
     "CMUMOSI": os.path.join(DATA_ROOT, "CMUMOSI"),
