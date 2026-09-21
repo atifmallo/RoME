@@ -1,0 +1,36 @@
+name: Import dataset label files
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/import-dataset.yml
+
+permissions:
+  contents: write
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download verified label files
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p dataset/CMUMOSI dataset/CMUMOSEI
+          curl --fail --location --retry 3             https://raw.githubusercontent.com/wxxv/MoMKE/main/dataset/CMUMOSI/CMUMOSI_features_raw_2way.pkl             --output dataset/CMUMOSI/CMUMOSI_features_raw_2way.pkl
+          curl --fail --location --retry 3             https://raw.githubusercontent.com/wxxv/MoMKE/main/dataset/CMUMOSEI/CMUMOSEI_features_raw_2way.pkl             --output dataset/CMUMOSEI/CMUMOSEI_features_raw_2way.pkl
+          echo "931ee50f3a77b2eb18786840a880a439f3ae6542bf2dfb5e14ecc9690702af84  dataset/CMUMOSI/CMUMOSI_features_raw_2way.pkl" | sha256sum -c -
+          echo "0621d2cc93bee23642ef260f045f90c484136299d497df61a43527b34187f5d6  dataset/CMUMOSEI/CMUMOSEI_features_raw_2way.pkl" | sha256sum -c -
+      - name: Commit dataset files
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f dataset/CMUMOSI/CMUMOSI_features_raw_2way.pkl
+          git add -f dataset/CMUMOSEI/CMUMOSEI_features_raw_2way.pkl
+          git rm .github/workflows/import-dataset.yml
+          git commit -m "Add CMU-MOSI and CMU-MOSEI label files"
+          git push
