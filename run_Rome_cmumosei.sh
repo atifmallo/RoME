@@ -3,7 +3,7 @@
 #!/bin/bash
 
 # CMUMOSEI with three random-seed runs
-SEEDS="${SEEDS:-$RANDOM $RANDOM $RANDOM}"
+# CMUMOSEI with three random-seed runs
 for SEED in $SEEDS
 do
   echo "========== CMUMOSEI, seed=${SEED} =========="
@@ -27,8 +27,7 @@ do
     --stage_epoch=30 \
     --gpu=1 \
     --lambda_m=0.0 \
-    --use_cmdae=0 \
-    --do_switch_ablation
+    --use_cmdae=0
 
   # T
   python -u Rome/train_Rome.py \
@@ -48,8 +47,7 @@ do
     --test_condition=t \
     --stage_epoch=30 \
     --gpu=1 \
-    --lambda_m=0.1 \
-    --do_switch_ablation
+    --lambda_m=0.1
 
   # V
   python -u Rome/train_Rome.py \
@@ -69,8 +67,7 @@ do
     --test_condition=v \
     --stage_epoch=30 \
     --gpu=1 \
-    --lambda_m=0.1 \
-    --do_switch_ablation
+    --lambda_m=0.1
 
   # AT
   python -u Rome/train_Rome.py \
@@ -90,8 +87,7 @@ do
     --test_condition=at \
     --stage_epoch=30 \
     --gpu=1 \
-    --lambda_m=0.1 \
-    --do_switch_ablation
+    --lambda_m=0.1
 
   # AV
   python -u Rome/train_Rome.py \
@@ -111,8 +107,7 @@ do
     --test_condition=av \
     --stage_epoch=30 \
     --gpu=1 \
-    --lambda_m=0.1 \
-    --do_switch_ablation
+    --lambda_m=0.1
 
   # TV
   python -u Rome/train_Rome.py \
@@ -132,8 +127,7 @@ do
     --test_condition=tv \
     --stage_epoch=30 \
     --gpu=1 \
-    --lambda_m=0.1 \
-    --do_switch_ablation
+    --lambda_m=0.1
 
   # ATV
   python -u Rome/train_Rome.py \
@@ -153,7 +147,6 @@ do
     --test_condition=atv \
     --stage_epoch=30 \
     --gpu=1 \
-    --lambda_m=0.1 \
-    --do_switch_ablation
+    --lambda_m=0.1
 
 done
