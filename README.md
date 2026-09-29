@@ -4,6 +4,8 @@ Official implementation of **RoME: Robust Multimodal Expert Learning for Sentime
 
 [[Paper]](https://doi.org/10.1038/s41598-026-60943-7)
 
+**Contact:** [atifmallo92@gmail.com](mailto:atifmallo92@gmail.com)
+
 RoME is a two-stage framework for multimodal sentiment analysis when audio, text, or visual inputs are missing. Stage 1 learns modality-specific representations using expert routing. Stage 2 builds robust multimodal representations through a Cross-Modal Interaction Transformer (CIT), Modality Reliability Re-Weighting (MRR), Residual Multimodal Corrector (RMC), and Cross-Modal Denoising Autoencoder (CM-DAE).
 
 ## Main contributions
