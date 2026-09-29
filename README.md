@@ -23,6 +23,11 @@ RoME/
 ├── requirements.txt
 ├── run_Rome_cmumosi.sh
 ├── run_Rome_cmumosei.sh
+├── dataset/
+│   ├── CMUMOSI/
+│   │   └── CMUMOSI_features_raw_2way.pkl
+│   └── CMUMOSEI/
+│       └── CMUMOSEI_features_raw_2way.pkl
 └── Rome/
     ├── train_Rome.py
     ├── model.py
@@ -101,7 +106,7 @@ The default data location is `./dataset`. To keep the data elsewhere, set its pa
 export ROME_DATA_ROOT=/absolute/path/to/dataset
 ```
 
-Outputs are written to `./outputs` by default. An alternative location can be set with `ROME_OUTPUT_ROOT`.
+Outputs are written to `./saved` by default. Set `ROME_OUTPUT_ROOT` before training to use a different parent directory.
 
 ## Training and evaluation
 
@@ -153,19 +158,6 @@ a, t, v, at, av, tv, atv
 
 Binary masks simulate unavailable modalities during Stage 2. Stage 1 retains the complete unimodal inputs required to train the modality experts.
 
-## Ablation study
-
-The four Stage 2 components are enabled by default. They can be controlled with integer switches:
-
-```bash
---use_cit=0
---use_mrr=0
---use_rmc=0
---use_cmdae=0
-```
-
-Adding `--do_switch_ablation` evaluates the best trained checkpoint with each component disabled in turn. This is the switchboard evaluation used to study CIT, MRR, RMC, and CM-DAE.
-
 ## Main results
 
 Results are averaged over three independent runs with different random seeds. Each cell reports **Accuracy / F1-score (%)**.
@@ -186,14 +178,29 @@ The incomplete average is computed over the six non-trimodal conditions: A, T, V
 
 ## Outputs
 
-Training logs, checkpoints, predictions, and JSON summaries are stored under the directory configured by `ROME_OUTPUT_ROOT`:
+By default, RoME stores all generated files under `saved/`. CMU-MOSI and CMU-MOSEI outputs are kept in separate dataset directories:
 
 ```text
-outputs/
+saved/
 ├── log/
+│   └── main_result/
+│       ├── CMUMOSI/                 # CMU-MOSI training logs
+│       ├── CMUMOSEI/                # CMU-MOSEI training logs
+│       ├── table_cache/
+│       │   ├── CMUMOSI/             # CMU-MOSI JSON result summaries
+│       │   └── CMUMOSEI/            # CMU-MOSEI JSON result summaries
+│       └── pred_dumps/               # created only with --save_preds
+│           ├── CMUMOSI/
+│           └── CMUMOSEI/
 ├── model/
-└── npz/
+│   └── main_result/
+│       ├── CMUMOSI/                 # CMU-MOSI checkpoints
+│       └── CMUMOSEI/                # CMU-MOSEI checkpoints
+├── npz/
+└── pretrained/
 ```
+
+The main locations are therefore `saved/log/main_result/CMUMOSI`, `saved/log/main_result/CMUMOSEI`, `saved/model/main_result/CMUMOSI`, and `saved/model/main_result/CMUMOSEI`. Set `ROME_OUTPUT_ROOT` before training if you want to replace the `saved/` root with another directory.
 
 ## Citation
 
